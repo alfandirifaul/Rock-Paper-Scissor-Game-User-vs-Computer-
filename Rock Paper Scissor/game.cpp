@@ -94,7 +94,7 @@ string checkThePlayChoiceIsValid(string choice){
         return choice;
     }else{
         cout << "Invalid choice!" << endl;
-        cout << "Do you want to play again? (yes/no): ";
+        cout << "Do you want to play again? (y/n): ";
         cin >> choice;
         return checkThePlayChoiceIsValid(choice);
     }

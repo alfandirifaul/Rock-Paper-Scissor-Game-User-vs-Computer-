@@ -44,6 +44,99 @@ void displayGameArt() {
 
 }
 
+// display text when exit
+void textDisplayWhenExit(){
+    cout << "  _____                 _   ____             _ " << endl;
+    cout << " / ____|               | | |  _ \\           | |" << endl;
+    cout << "| |  __  ___   ___   __| | | |_) |_   _  ___| |" << endl;
+    cout << "| | |_ |/ _ \\ / _ \\ / _` | |  _ <| | | |/ _ \\ |" << endl;
+    cout << "| |__| | (_) | (_) | (_| | | |_) | |_| |  __/_|" << endl;
+    cout << " \\_____|\\___/ \\___/ \\__,_| |____/ \\__, |\\___(_)" << endl;
+    cout << "                                  __/ |        " << endl;
+    cout << "                                 |___/         " << endl;
+}
+
+// display rock
+void displayRock() {
+    cout << "    _______" << endl;
+    cout << "---'   ____) " << endl;
+    cout << "      (_____) " << endl;
+    cout << "      (_____) " << endl;
+    cout << "      (____) " << endl;
+    cout << "---.__(___) " << endl;
+    cout << "Rock" << endl;
+}
+
+// display paper
+void displayPaper() {
+    cout << "     _____" << endl;
+    cout << " ---' ____)____" << endl;
+    cout << "           ______)" << endl;
+    cout << "          _______)" << endl;
+    cout << "         _______)" << endl;
+    cout << "---.__________)" << endl;
+    cout << "Paper" << endl;
+}
+
+// display scissor
+void displayScissors() {
+    cout << "    _______" << endl;
+    cout << "---'   ____)________" << endl;
+    cout << "              ______)" << endl;
+    cout << "          __________)" << endl;
+    cout << "           (____)" << endl;
+    cout << "---.__(___)" << endl;
+    cout << "Scissors" << endl;
+}
+
+// display if the user is win
+void userIsWin(){
+        cout << " __     __          __          _ _       _ " << endl;
+        cout << " \\ \\   / /          \\ \\        / (_)     | |" << endl;
+        cout << "  \\ \\_/ /__  _   _   \\ \\  /\\  / / _ _ __ | |" << endl;
+        cout << "   \\   / _ \\| | | |   \\ \\/  \\/ / | | '_ \\| |" << endl;
+        cout << "    | | (_) | |_| |    \\  /\\  /  | | | | |_|" << endl;
+        cout << "    |_|\\___/ \\__,_|     \\/  \\/   |_|_| |_(_)" << endl;
+}
+
+// display if the computer is win
+void computerIsWin(){
+        cout << "  _____                            _             __          ___       _ " << endl;
+        cout << " / ____|                          | |            \\ \\        / (_)     | |" << endl;
+        cout << "| |     ___  _ __ ___  _ __  _   _| |_ ___ _ __   \\ \\  /\\  / / _ _ __ | |" << endl;
+        cout << "| |    / _ \\| '_ ` _ \\| '_ \\| | | | __/ _ \\ '__|   \\ \\/  \\/ / | | '_ \\| |" << endl;
+        cout << "| |___| (_) | | | | | | |_) | |_| | ||  __/ |       \\  /\\  /  | | | | |_|" << endl;
+        cout << " \\_____\\___/|_| |_| |_| .__/ \\__,_|\\__\\___|_|        \\/  \\/   |_|_| |_(_)" << endl;
+        cout << "                      | |                                                " << endl;
+        cout << "                      |_|                                                " << endl;
+}
+
+// display if the game is draw 
+void gameIsDraw(){
+        cout << " _____ _   _               _   _      _ " << endl;
+        cout << "|_   _| | ( )             | | (_)    | |" << endl;
+        cout << "  | | | |_|/ ___    __ _  | |_ _  ___| |" << endl;
+        cout << "  | | | __| / __|  / _` | | __| |/ _ \\ |" << endl;
+        cout << " _| |_| |_  \\__ \\ | (_| | | |_| |  __/_|" << endl;
+        cout << "|_____|\\__| |___/  \\__,_|  \\__|_|\\___(_)" << endl;
+        cout << "                                         " << endl;
+        cout << "                                         " << endl;
+}
+
+// function to display the choice to ascii art
+void choiceArt(string choice){
+    if(choice == "Rock"){
+        displayRock();
+        cout << "\n";
+    }else if(choice == "Paper"){
+        displayPaper();
+        cout << "\n";
+    }else if(choice == "Scissor"){
+        displayScissors();
+        cout << "\n";
+    }
+}
+
 // function to check the user choice is valid or not
 string checkTheUserChoice(string choice){
     if(choice == "Rock" || choice == "Paper" || choice == "Scissor"){
@@ -59,7 +152,7 @@ string checkTheUserChoice(string choice){
 // function to get the user choice
 string getUserChoice(){
     string choice;
-    cout << "Enter your choice (Rock, Paper, Scissor): ";
+    cout << "Enter your choice (Rock, Paper, Scissor):\n >> ";
     cin >> choice;
     string isUserChoiceValid = checkTheUserChoice(choice);
     return isUserChoiceValid;
@@ -69,23 +162,23 @@ string getUserChoice(){
 string getComputerChoice(){
     string choice[] = {"Rock", "Paper", "Scissor"};
     int random = rand() % 3;
+    cout << "Computer choice: \n >> " << choice[random] << endl;
     return choice[random];
 }
 
 // function to determine the winner
-string determineTheWinner(string user, string computer){
+void determineTheWinner(string user, string computer){
     if(user == computer){
-        return "It's a tie!";
+        gameIsDraw();
     }else if(user == "Rock" && computer == "Paper"){
-        return "Computer wins!";
+        computerIsWin();
     }else if(user == "Paper" && computer == "Scissor"){
-        return "Computer wins!";
+        computerIsWin();
     }else if(user == "Scissor" && computer == "Rock"){
-        return "Computer wins!";
+        computerIsWin();
     }else{
-        return "You win!";
+        userIsWin();
     }
-
 }
 
 // function to check the play choice is valid or not
@@ -94,7 +187,7 @@ string checkThePlayChoiceIsValid(string choice){
         return choice;
     }else{
         cout << "Invalid choice!" << endl;
-        cout << "Do you want to play again? (y/n): ";
+        // cout << "Do you want to play again? (y/n): ";
         cin >> choice;
         return checkThePlayChoiceIsValid(choice);
     }
@@ -114,36 +207,59 @@ string userWantToPlayAgain(){
 void playGame(){
     string user = getUserChoice();
     string computer = getComputerChoice();
-    cout << "Computer choice: " << computer << endl;
-    cout << determineTheWinner(user, computer) << endl;
+    cout << "\nYou: " << endl;
+    choiceArt(user);
+    cout << "vs\n" << endl;
+    cout << "Computer: " << endl;
+    choiceArt(computer);
+    determineTheWinner(user, computer);
 
     string playAgain = userWantToPlayAgain();
-    if(playAgain == "yes" || playAgain == "y"){
+    if(playAgain == "y"){
         playGame();
     }else{
         cout << "Thanks" << endl;
     }
 }
 
+void exitTheGame();
+
 // function to display the main menu
 void mainMenu(){
     int choice;
     do{
-        cout << "0. Quit" << endl;
         cout << "1. Play Game" << endl;
+        cout << "2. Quit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
         switch(choice){
-            case 0:
-                cout << "Thanks for playing! Have a nice day!" << endl;
-                break;
             case 1:
                 playGame();
                 break;
+            case 2:
+                exitTheGame();
+                break;
             default:
                 cout << "Invalid choice!" << endl;
+                break;
         }
-    }while(choice != 0);
+    }while(choice != 2);
+}
+
+// function to exit the game
+void exitTheGame(){
+    string choice;
+    cout << "Do you want to exit? (y/n): ";
+    cin >> choice;
+
+    string exitGame = checkThePlayChoiceIsValid(choice);
+    if(exitGame == "y"){
+        cout << "Thanks for playing! Have a nice day!" << endl;
+        textDisplayWhenExit();
+        return;
+    }else{
+        mainMenu();
+    }
 }
 
 // main function to call the other functions
@@ -156,3 +272,9 @@ int main(){
 
     return 0;
 }
+
+
+
+
+
+

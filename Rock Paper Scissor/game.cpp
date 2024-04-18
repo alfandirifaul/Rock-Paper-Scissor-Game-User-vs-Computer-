@@ -52,8 +52,8 @@ void textDisplayWhenExit(){
     cout << "| | |_ |/ _ \\ / _ \\ / _` | |  _ <| | | |/ _ \\ |" << endl;
     cout << "| |__| | (_) | (_) | (_| | | |_) | |_| |  __/_|" << endl;
     cout << " \\_____|\\___/ \\___/ \\__,_| |____/ \\__, |\\___(_)" << endl;
-    cout << "                                  __/ |        " << endl;
-    cout << "                                 |___/         " << endl;
+    cout << "                                   __/ |        " << endl;
+    cout << "                                  |___/         " << endl;
 }
 
 // display rock
@@ -64,7 +64,6 @@ void displayRock() {
     cout << "      (_____) " << endl;
     cout << "      (____) " << endl;
     cout << "---.__(___) " << endl;
-    cout << "Rock" << endl;
 }
 
 // display paper
@@ -75,7 +74,6 @@ void displayPaper() {
     cout << "          _______)" << endl;
     cout << "         _______)" << endl;
     cout << "---.__________)" << endl;
-    cout << "Paper" << endl;
 }
 
 // display scissor
@@ -86,7 +84,6 @@ void displayScissors() {
     cout << "          __________)" << endl;
     cout << "           (____)" << endl;
     cout << "---.__(___)" << endl;
-    cout << "Scissors" << endl;
 }
 
 // display if the user is win
@@ -207,10 +204,10 @@ string userWantToPlayAgain(){
 void playGame(){
     string user = getUserChoice();
     string computer = getComputerChoice();
-    cout << "\nYou: " << endl;
+    cout << "\nYou: "<< user << endl;
     choiceArt(user);
     cout << "vs\n" << endl;
-    cout << "Computer: " << endl;
+    cout << "Computer: " << computer << endl;
     choiceArt(computer);
     determineTheWinner(user, computer);
 
